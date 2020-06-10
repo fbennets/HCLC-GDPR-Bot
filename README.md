@@ -9,7 +9,7 @@ The instructions down below will get you a copy of the project up and running on
 
 You need to install Python and the package manager PIP. When you install Python <= 3.4 from the [official website](https://www.python.org/downloads/), PIP is already installed.
 
-```
+```bash
 # Install virtual enviroment
 pip install virtualenv
 ```
@@ -18,7 +18,7 @@ pip install virtualenv
 
 First set-up and start the virtual environment.
 
-```
+```bash
 # Create virtualenv
 virtualenv -p python3 bot
 
@@ -27,41 +27,47 @@ source od/bin/activate
 
 ```
 
-Now clone the repo to the "src"-folder or download the [repo](https://github.com/fbennets/open-decision) as zip, unpack the folder, move it into the folder of your environment and rename it to "src".
+Now clone the repo to the "src"-folder or download the [repo](https://github.com/fbennets/HCLC-GDPR-Bot) as zip, unpack the folder, move it into the folder of your environment and rename it to "src".
 
-```
+```bash
 # Clone repository to current directory
 cd bot
-git clone https://github.com/fbennets/open-decision.git src
+git clone https://github.com/fbennets/HCLC-GDPR-Bot src
 
 ```
 Next install the requirements.
 
-```
+```bash
 # Install dependencies
 cd src
 pip install -r requirements.txt
 ```
+
 Now, get the models for spacy to do the language processing.
-```
+```bash
 python -m spacy download de_core_news_md
 python -m spacy link de_core_news_md de
 ```
+
+Train the language model and run the tests.
+```bash
+rasa train
+rasa test
+```
+
+You're ready to start a conversation with your bot!
+```bash
+rasa shell
+```
+
 ## Built With
 
 * [Rasa](https://rasa.com/) - The Rasa bot-framework used
 
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://github.com/fbennets/open-decision/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/fbennets/open-decision/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/fbennets/HCLC-GDPR-Bot/blob/master/LICENSE) file for details.
 
 ## Links
 
-* [Project Website](http://open-decision.org)
-* [Join our Slack-Channel](https://join.slack.com/t/opendecision/shared_invite/enQtNjM2NDUxNTQyNzU4LWYwMzJlZjlhOWJkMmIxMTBmMjYwMDE0Y2Y2OGUyZDBiY2FmOWU4OTVmMDFhMjNhNTIxYWZkZTNkNDRmNjQ4MmM)
-* [Documentation](https://open-decision.readthedocs.io/en/latest/)
+* [HCLC Website](https://hclc-berlin.de/)
