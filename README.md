@@ -23,7 +23,7 @@ First set-up and start the virtual environment.
 virtualenv -p python3 bot
 
 # Start environment
-source od/bin/activate
+source bot/bin/activate
 
 ```
 
