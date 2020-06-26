@@ -1,1 +1,2 @@
+tensorflow==2.1.1
 rasa[spacy]==1.10.2
