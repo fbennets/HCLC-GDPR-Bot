@@ -6,26 +6,73 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - confused
+  - ask_for_help
+  - insult
+  - ask_about_trust
+  - ask_about_hclc
+  - information_personal_data
+  - stop_using_my_data
+  - stop_advertisement
+  - delete_personal_data
+  - fun_part
+  - datenschutz_begriff
+
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+  - text: "Hey, ich bin DSBot. Schön, dass Du Deinen weg zu mir gefunden hast.
+Schenk Dir einen Sekt ein, wir sortieren jetzt Deinen Datenschutz im Internet. Was willst du tun?"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Bye from HCLC"
+
+  utter_cheer_up:
+  - text: "Ahh, bitte nicht traurig sein..."
+
+  utter_did_that_help:
+  - text: "Hat das geholfen?"
+
+  utter_happy:
+  - text: "Super, weiter so!"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "Ich bin ein juristischer Chatbot der HCLC."
+
+  utter_ask_about_hclc:
+  - text: "Die Humboldt Consumer Law Clinic (HCLC) ist eine studentische Rechtsberatung, die sich auf das Verbraucherrecht spezialisiert hat. Sie ist ein Projekt der Humboldt-Universität zu Berlin.
+Die Studierenden der HCLC beraten gemeinsam mit erfahrenen Volljuristen Verbraucherinnen und Verbraucher kostenfrei bei der Durchsetzung ihrer Rechte."
+
+  utter_fun_part:
+  - text: "Ich bin nicht lustig, sorry..."
+
+  utter_ask_for_help:
+  - text: "Ich kann dir dabei helfen, abzufragen, welche Daten ein Unternehmen über dich gespeichert hat." 
+
+  utter_datenschutz_begriff:
+  - text: "Du hast Ansprüche aus der DSGVO. Ich kann Dir dabei helfen sie durchzusetzen."
+
+  utter_delete_personal_data:
+  - text: "Gerne helfe ich dir dabei, deine Daten zu löschen."
+
+  utter_insult:
+  - text: "Deine Manieren lassen aber zu wünschen übrig!"
+
+  utter_ask_about_trust:
+  - text: "Wir sind die gemeinnützige studentische Rechtsberatung der Juristischen Fakultät der Humboldt Universität. Wir studieren Jura und werden von AnwältInnen und ProfessorInnen betreut. Dadurch können wir sicherstellen, dass unsere Arbeit rechtlich geprüft ist. Zudem sind wir eine ehrenamtliche Organisation, die sich dem Verbraucherschutz verschrieben hat und keine kommerziellen Absichten verfolgt. Besuche gerne www.hclc-berlin.de, um uns kennenzulernen!"
+
+  utter_stop_advertisement:
+  - text: "Spam ist nervig, stimmt!"
+
+  utter_confused:
+  - text: "Oh, bist du verwirrt?"
+
+  utter_stop_using_my_data:
+  - text: "Okay, du kannst der Nutzung deiner Daten widersprechen"
+
+  utter_information_personal_data:
+  - text: "Okay, du kannst der Nutzung deiner Daten widersprechen"
+
 
 session_config:
   session_expiration_time: 60

@@ -35,12 +35,16 @@ cd bot
 git clone https://github.com/fbennets/HCLC-GDPR-Bot src
 
 ```
-Next install the requirements.
+Next install the requirements. If you get to many dependency errors, try to use the second command.
 
 ```bash
 # Install dependencies
 cd src
 pip install -r requirements.txt
+
+OR
+
+pip install rasa[spacy]
 ```
 
 Now, get the models for spacy to do the language processing.
