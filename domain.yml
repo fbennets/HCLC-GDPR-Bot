@@ -19,6 +19,7 @@ responses:
   - text: "Gerne helfe ich dir dabei, deine Daten zu löschen."
 
   utter_stop_advertisement:
+    - text: "Gerne helfe ich dir dabei, keine Werbung mehr zu erhalten."
 
   utter_stop_using_my_data:
   - text: "Okay, du kannst der Nutzung deiner Daten widersprechen"
