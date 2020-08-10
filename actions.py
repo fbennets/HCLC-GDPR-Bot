@@ -1,27 +1,21 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/core/actions/#custom-actions/
+from rasa_sdk.forms import FormAction
+from datenanfragen import search_company 
+import json
+
+class CompanySearchForm(FormAction):
+    def name(self):
+        return "company_search_form"
+
+    @staticmethod
+    def required_slots(tracker):
+        return ["company_name"]
 
 
-# This is a simple example for a custom action which utters "Hello World!"
+    def slot_mappings(self):
+        return {"company_name": self.from_text(intent=None)}
+    
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+    def submit(self, dispatcher, tracker, domain):
+        companyButtons=list(map(lambda b: { "title": b, "payload": "payload"}, search_company(tracker.get_slot("company_name"),5)))
+        dispatcher.utter_message(text="Handelt es sich um eines der nachfolgenden Unternehmen? ", buttons=companyButtons)
+        return []

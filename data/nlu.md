@@ -36,6 +36,11 @@
 - Daten abfragen
 
 
+## intent:company_search
+- Suche nach Unternehmen
+- Unternehmenssuche
+- Firma eingeben
+
 
 ## intent: faq/ask_about_hclc
 - Wer seid ihr?

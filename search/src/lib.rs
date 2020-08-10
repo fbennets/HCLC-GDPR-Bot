@@ -35,7 +35,7 @@ lazy_static! {
     static ref companies: Vec<Schema> = {
         println!("+++ Initialize Datenanfragen... +++");
 
-        let file: File = File::open("src/companies.zip").unwrap();
+        let file: File = File::open("companies.zip").unwrap();
         let mut zip: zip::ZipArchive<File> = zip::ZipArchive::new(file).unwrap();
  
         let mut array: Vec<Schema> = Vec::with_capacity(zip.len()-1);

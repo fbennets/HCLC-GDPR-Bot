@@ -6,6 +6,10 @@ intents:
   - stop_advertisement
   - delete_personal_data
   - datenschutz_begriff
+  - company_search
+
+entities:
+  - company_name
 
 actions:
   - respond_faq
@@ -26,6 +30,16 @@ responses:
 
   utter_information_personal_data:
   - text: "Okay, du kannst der Nutzung deiner Daten widersprechen"
+
+  utter_company_name:
+  - text: "Wie lautet der Name des Unternehmens?"
+
+forms:
+  - company_search_form
+
+slots:
+  company_name:
+    type: text
 
 session_config:
   session_expiration_time: 60

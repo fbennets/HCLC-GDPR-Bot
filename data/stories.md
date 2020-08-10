@@ -18,6 +18,13 @@
 * datenschutz_begriff
   - utter_datenschutz_begriff
 
+## Company search
+* company_search
+  - utter_company_name
+  - company_search_form
+  - form{"name": "company_search_form"}
+  - form{"name": null}
+
 ## Chitchat
   * chitchat
     - respond_chitchat
