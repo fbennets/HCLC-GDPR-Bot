@@ -3,3 +3,4 @@ results/story_confmat.pdf
 results/failed_stories.md
 results/hist.png
 results/confmat.png
+results/**

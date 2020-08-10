@@ -1,0 +1,1 @@
+{"rustc":11295616921483704964,"features":"[]","target":1558998622062249174,"profile":2574335274271406459,"path":10872709659218687626,"deps":[[12962805674674511607,"pyo3",false,7010058913212066336]],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/string-sum-cbf329775de26317/dep-lib-string_sum"}}],"rustflags":[],"metadata":7797948686568424061}

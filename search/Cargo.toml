@@ -1,0 +1,21 @@
+[package]
+name = "datenanfragen"
+version = "0.1.0"
+edition = "2018"
+authors=["Humboldt Consumer Law Clinic <hclc@rewi.hu-berlin.de>"]
+
+[lib]
+name = "datenanfragen"
+crate-type = ["cdylib"]
+
+[dependencies.pyo3]
+version = "0.11.1"
+features = ["extension-module"]
+
+[dependencies]
+lazy_static = "1.4.0"
+schemafy = "0.5.0"
+serde = "1.0.114"
+serde_json = "1.0.56"
+zip = "0.5"
+eddie = "0.4"
