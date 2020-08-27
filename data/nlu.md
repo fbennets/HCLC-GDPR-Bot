@@ -213,3 +213,24 @@
 - stimmt
 - glaube schon
 - nice
+
+## intent:name
+- name
+
+## intent:email
+- email
+
+## intent:kundennummer
+- kundennummer
+
+## intent:anschrift
+- anschrift
+
+## intent:plz
+- plz
+
+## intent:stadt
+- stadt
+
+## intent:land
+- land

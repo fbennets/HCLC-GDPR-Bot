@@ -6,6 +6,15 @@ intents:
   - stop_advertisement
   - delete_personal_data
   - datenschutz_begriff
+  # Nutzerdaten intents
+  - name
+  - email
+  - kundennummer
+  - anschrift
+  - plz
+  - stadt
+  - land
+
 
 actions:
   - respond_faq
@@ -26,6 +35,39 @@ responses:
 
   utter_information_personal_data:
   - text: "Okay, du kannst der Nutzung deiner Daten widersprechen"
+
+# Nutzerdaten responses
+
+  utter_ask_name:
+  - text: "Bitte gib deinen Vor- und Nachnamen an."
+  utter_ask_email:
+  - text: "Bitte gib deine verwendete E-Mail Adresse an."
+  utter_ask_kundennummer:
+  - text: "Bitte gib deine Kundennummer an."
+  utter_ask_anschrift:
+  - text: "Bitte gib deine Straße und Hausnummer an"
+  utter_ask_plz:
+  - text: "Bitte gib deine Postleitzahl an."
+  utter_ask_stadt:
+  - text: "Bitte gib deine Stadt an."
+  utter_ask_land:
+  - text: "Bitte gib dein Land an."
+
+slots:
+  name:
+    type: unfeaturized
+  email:
+    type: unfeaturized
+  kundennummer:
+    type: unfeaturized
+  anschrift:
+    type: unfeaturized
+  plz:
+    type: unfeaturized
+  stadt:
+    type: unfeaturized
+  land:
+    type: unfeaturized
 
 session_config:
   session_expiration_time: 60
