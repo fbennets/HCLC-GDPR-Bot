@@ -11,6 +11,26 @@ actions:
   - respond_faq
   - respond_chitchat
 
+forms:
+  - company_form
+  - delete_data_form
+
+entities:
+  - company_name
+  - privacy_email
+  - reason_for_deletion
+  - consent_given
+
+slots:
+  company_name:
+    type: unfeaturized
+  privacy_email:
+    type: unfeaturized
+  reason_for_deletion:
+    type: unfeaturized
+  consent_given:
+     type: unfeaturized
+
 responses:
   utter_datenschutz_begriff:
   - text: "Du hast Ansprüche aus der DSGVO. Ich kann Dir dabei helfen sie durchzusetzen."
@@ -26,6 +46,31 @@ responses:
 
   utter_information_personal_data:
   - text: "Okay, du kannst der Nutzung deiner Daten widersprechen"
+
+  utter_ask_privacy_email:
+  - text: Wie lautet die E-Mailadresse für Datenschutzanfragen?
+
+  utter_ask_company:
+  - text: Wie lautet der Name der Firma?
+
+  utter_ask_reason_for_deletion:
+  - text: Welcher dieser Löschungsgründe könnte deiner Meinung nach infrage kommen? Was ist der Grund für die Datenlöschung?
+    buttons:
+    - title: "Die Daten werden nicht mehr benötigt"
+      payload: '/delete_personal_data{"reason_for_deletion": "nicht_mehr_benötigt"}'
+    - title: "Die Datenverarbeitung erfolgte unrechtmäßig"
+      payload: '/delete_personal_data{"reason_for_deletion": "unrechtmäßige_einwilligung"}'
+
+  utter_ask_consent_given:
+  - text: Hast Du eine Einwilligung erteilt?
+    buttons:
+    - title: "Ja"
+      payload: '/delete_personal_data{"consent_given": "ja"}'
+    - title: "Nein"
+      payload: '/delete_personal_data{"consent_given": "nein"}'
+    - title: "Ich weiß es nicht"
+      payload: '/delete_personal_data{"consent_given": "ich_weiß_es_nicht"}'
+
 
 session_config:
   session_expiration_time: 60

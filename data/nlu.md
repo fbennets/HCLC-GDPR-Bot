@@ -213,3 +213,17 @@
 - stimmt
 - glaube schon
 - nice
+
+## intent:inform
+- Die Firma heißt [Rasa](company)
+- Ich möchte mich [ACME](company)
+- company: [Rasa Technologies](company)
+- it's a small company from the US, the name is [Hooli](company)
+- it's a tech company, [Rasa](company)
+- [ACME](company)
+- [Rasa Technologies](company)
+- [maxmeier@firma.de](business_email)
+- [bot-fan@bots.com](business_email)
+- [maxmeier@firma.de](business_email)
+- [bot-fan@bots.com](business_email)
+- [my email is email@rasa.com](business_email)
