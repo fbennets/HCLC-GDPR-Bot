@@ -36,3 +36,19 @@
 ## Some question from FAQ
   * faq
     - respond_faq
+
+## Nutzerdaten
+* name
+  - utter_ask_name
+* email
+  - utter_ask_email
+* kundennummer
+  - utter_ask_kundennummer
+* anschrift
+  - utter_ask_anschrift
+* plz
+  - utter_ask_plz
+* stadt
+  - utter_ask_stadt
+* land
+  - utter_ask_land

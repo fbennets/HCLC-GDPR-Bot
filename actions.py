@@ -103,3 +103,33 @@ class DeleteDataForm(FormAction):
 #         dispatcher.utter_message(text="Hello World!")
 #
 #         return []
+
+from rasa_sdk.forms import FormAction
+
+class NutzerDaten(FormAction):
+    """Die Nutzerdaten werden erhoben"""
+
+    def name(self):
+        return "nutzer_daten"
+
+    @staticmethod
+    def required_slots(tracker):
+        return [
+            "name",
+            "email",
+            "kundennummer",
+            "anschrift",
+            "plz",
+            "stadt",
+            "land",
+            ]
+
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+        ) -> List[Dict]:
+
+        dispatcher.utter_message("Danke für die Angabe deiner Daten!")
+        return []
