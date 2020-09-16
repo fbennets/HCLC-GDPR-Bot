@@ -215,7 +215,7 @@
 - nice
 
 
-## intent:inform
+<!-- ## intent:inform
 - Die Firma heißt [Rasa](company)
 - Ich möchte mich [ACME](company)
 - company: [Rasa Technologies](company)
@@ -227,26 +227,4 @@
 - [bot-fan@bots.com](business_email)
 - [maxmeier@firma.de](business_email)
 - [bot-fan@bots.com](business_email)
-- [my email is email@rasa.com](business_email)
-
-## intent:name
-- name
-
-## intent:email
-- email
-
-## intent:kundennummer
-- kundennummer
-
-## intent:anschrift
-- anschrift
-
-## intent:plz
-- plz
-
-## intent:stadt
-- stadt
-
-## intent:land
-- land
-
+- [my email is email@rasa.com](business_email) -->

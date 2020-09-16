@@ -6,4 +6,4 @@ services:
       - 5005:5005
     volumes:
       - ./:/app
-    command: run --enable-api --cors '*'
+    command: run --enable-api

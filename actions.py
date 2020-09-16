@@ -8,8 +8,7 @@ from rasa_sdk.forms import FormAction
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
-from rasa_sdk import Action, Tracker
-from rasa_sdk.executor import CollectingDispatcher
+from rasa.core.tracker_store import InMemoryTrackerStore
 
 class CompanyForm(FormAction):
 
@@ -23,6 +22,18 @@ class CompanyForm(FormAction):
             "privacy_email",
             ]
 
+    def slot_mappings(self):
+        # type: () -> Dict[Text: Union[Dict, List[Dict]]]
+        """A dictionary to map required slots to
+            - an extracted entity
+            - intent: value pairs
+            - a whole message
+            or a list of them, where a first match will be picked"""
+
+        return {"company_name": [self.from_entity(entity="company_name"),
+                             self.from_text()],
+                "privacy_email": [self.from_entity(entity="privacy_email"),
+                             self.from_text()]}
     def submit(
         self,
         dispatcher: CollectingDispatcher,
@@ -89,28 +100,12 @@ class DeleteDataForm(FormAction):
 # reason_for_deletion: nicht mehr benötigt (Form beenden, Intent Einwilligungswiderrruf)
 # reason_for_deletion: unrechtmäßige Einwilligung
 
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
 
-from rasa_sdk.forms import FormAction
-
-class NutzerDaten(FormAction):
+class PersonalDataForm(FormAction):
     """Die Nutzerdaten werden erhoben"""
 
     def name(self):
-        return "nutzer_daten"
+        return "personal_data_form"
 
     @staticmethod
     def required_slots(tracker):
@@ -121,8 +116,32 @@ class NutzerDaten(FormAction):
             "anschrift",
             "plz",
             "stadt",
-            "land",
+            "land"
             ]
+
+    def slot_mappings(self):
+        # type: () -> Dict[Text: Union[Dict, List[Dict]]]
+        """A dictionary to map required slots to
+            - an extracted entity
+            - intent: value pairs
+            - a whole message
+            or a list of them, where a first match will be picked"""
+
+        return {"name": [self.from_entity(entity="name"),
+                             self.from_text()],
+                "email": [self.from_entity(entity="email"),
+                             self.from_text()],
+                "kundennummer": [self.from_entity(entity="kundennummer"),
+                                     self.from_text()],
+                "anschrift": [self.from_entity(entity="anschrift"),
+                                     self.from_text()],
+                "plz": [self.from_entity(entity="plz"),
+                                     self.from_text()],
+                "stadt": [self.from_entity(entity="stadt"),
+                                     self.from_text()],
+                "land": [self.from_entity(entity="land"),
+                                     self.from_text()]
+                             }
 
     def submit(
             self,

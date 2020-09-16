@@ -1,6 +1,11 @@
 ## Information
 * information_personal_data
   - utter_information_personal_data
+  - utter_start_personal_data_form
+  - personal_data_form                   
+  - form{"name": "personal_data_form"}   
+  - form{"name": null}    
+  - utter_start_company_form
   - company_form                   
   - form{"name": "company_form"}   
   - form{"name": null}    
@@ -8,6 +13,11 @@
 ## Stop Data use
 * stop_using_my_data
   - utter_stop_using_my_data
+  - utter_start_personal_data_form
+  - personal_data_form                   
+  - form{"name": "personal_data_form"}   
+  - form{"name": null}    
+  - utter_start_company_form
   - company_form                   
   - form{"name": "company_form"}   
   - form{"name": null}    
@@ -15,19 +25,27 @@
 ## Stop advertisement
 * stop_advertisement
   - utter_stop_advertisement
+  - utter_start_personal_data_form
+  - personal_data_form                   
+  - form{"name": "personal_data_form"}   
+  - form{"name": null}    
+  - utter_start_company_form
   - company_form                   
   - form{"name": "company_form"}   
-  - form{"name": null}    
+  - form{"name": null}
 
 ## Delete personal data
 * delete_personal_data
   - delete_data_form                  
   - form{"name": "delete_data_form"}   
   - form{"name": null}    
+  - utter_start_personal_data_form
+  - personal_data_form                   
+  - form{"name": "personal_data_form"}   
+  - form{"name": null}   
 
 ## Datenschutz
 * datenschutz_begriff
-  - utter_datenschutz_begriff
 
 ## Chitchat
   * chitchat
@@ -37,7 +55,7 @@
   * faq
     - respond_faq
 
-## Nutzerdaten
+<!-- ## Nutzerdaten
 * name
   - utter_ask_name
 * email
@@ -51,4 +69,4 @@
 * stadt
   - utter_ask_stadt
 * land
-  - utter_ask_land
+  - utter_ask_land -->
