@@ -10,6 +10,74 @@ from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
 from rasa.core.tracker_store import InMemoryTrackerStore
 
+class GenerateLetter1(Action) :
+
+	def name(self) -> Text:
+		return "generate_letter1"
+
+	def run(self,file_name, dispatcher:CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]):
+
+		# nimmt Musterschreiben-Dateiname und gibt Mustertext als String wieder
+		def get_letter_text(file_name):
+			return open(file_name,"r").read()
+
+		# durchsucht txt-Datei nach Parametern mit {PARAMETER_NAME} als Form und gibt alle Parameternamen als Liste wieder
+		def list_needed_slots(text):
+			slots = []
+			is_slot = False
+			current_slot = []
+
+			for char in text:
+				if char == "{":
+					is_slot = True
+
+				if char == "}":
+					is_slot = False
+					slot = "".join(current_slot)
+					slots.append(slot[1:])
+					current_slot = []
+				
+				while is_slot == True:
+					current_slot.append(char)
+					break
+
+			return slots
+
+
+		# nimmt Liste an benötigten Parametern und gibt jeweilige Werte aus der Session wieder
+		test_data = {
+							"nname" : "Gleich",
+							"vname" : "Julius"
+							}
+
+		def get_session_data_from_memory(parameter):
+			
+			session_data = {}
+
+			for i in parameter:
+				key = parameter[i]
+				value = tracker.current_state()['slots'][key]
+
+				session_data.update({key:value}) 
+
+			return session_data
+
+		# nimmt Mustertext, Parameterliste, und jeweilige Session-Werte und gibt fertig formuliertes Schreiben als String wieder
+		def fill_in_session_data(text, slots, session_data):
+			for slot in range(len(slots)):
+				current_session_data = slots[slot]
+				text = text.replace("{"+slots[slot]+"}", session_data[current_session_data])
+
+			return text
+
+		a = get_letter_text(file_name)
+		b = list_needed_slots(a)
+		c =	get_session_data_from_memory(b)
+
+
+		dispatcher.utter_message("Dein fertiges " + file_name + " wird generiert...")
+		dispatcher.utter_message(fill_in_session_data(a,b,c))
+
 class CompanyForm(FormAction):
 
     def name(self):
