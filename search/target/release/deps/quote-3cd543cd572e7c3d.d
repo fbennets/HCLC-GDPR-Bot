@@ -1,0 +1,13 @@
+/home/elias/Projekte/hclc-bot/src/search/target/release/deps/quote-3cd543cd572e7c3d.rmeta: /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/lib.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/ext.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/format.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/ident_fragment.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/to_tokens.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/runtime.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/spanned.rs
+
+/home/elias/Projekte/hclc-bot/src/search/target/release/deps/libquote-3cd543cd572e7c3d.rlib: /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/lib.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/ext.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/format.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/ident_fragment.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/to_tokens.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/runtime.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/spanned.rs
+
+/home/elias/Projekte/hclc-bot/src/search/target/release/deps/quote-3cd543cd572e7c3d.d: /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/lib.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/ext.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/format.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/ident_fragment.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/to_tokens.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/runtime.rs /home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/spanned.rs
+
+/home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/lib.rs:
+/home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/ext.rs:
+/home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/format.rs:
+/home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/ident_fragment.rs:
+/home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/to_tokens.rs:
+/home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/runtime.rs:
+/home/elias/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.7/src/spanned.rs:

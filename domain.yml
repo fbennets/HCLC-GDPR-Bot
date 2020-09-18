@@ -15,6 +15,7 @@ forms:
   - company_form
   - delete_data_form
   - personal_data_form
+  - company_search_form
 
 entities:
   - company_name

@@ -6,9 +6,12 @@
   - form{"name": "personal_data_form"}   
   - form{"name": null}    
   - utter_start_company_form
-  - company_form                   
+  <!-- - company_form                   
   - form{"name": "company_form"}   
-  - form{"name": null}    
+  - form{"name": null}     -->
+  - company_search_form
+  - form{"name": "company_search_form"}
+  - form{"name": null}
 
 ## Stop Data use
 * stop_using_my_data
@@ -18,9 +21,12 @@
   - form{"name": "personal_data_form"}   
   - form{"name": null}    
   - utter_start_company_form
-  - company_form                   
+  <!-- - company_form                   
   - form{"name": "company_form"}   
-  - form{"name": null}    
+  - form{"name": null}     -->
+  - company_search_form
+  - form{"name": "company_search_form"}
+  - form{"name": null}
 
 ## Stop advertisement
 * stop_advertisement
@@ -30,10 +36,13 @@
   - form{"name": "personal_data_form"}   
   - form{"name": null}    
   - utter_start_company_form
-  - company_form                   
+  <!-- - company_form                   
   - form{"name": "company_form"}   
+  - form{"name": null} -->
+  - company_search_form
+  - form{"name": "company_search_form"}
   - form{"name": null}
-
+  
 ## Delete personal data
 * delete_personal_data
   - delete_data_form                  
