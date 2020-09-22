@@ -12,6 +12,7 @@ use pyo3::wrap_pyfunction;
 use serde::{Serialize, Deserialize};
 use std::io::BufReader;
 use eddie::JaroWinkler;
+use serde_json::json;
 
 schemafy::schemafy!(
     root: Schema
@@ -30,7 +31,6 @@ pub fn read_file(file: zip::read::ZipFile)-> String {
     contents
 }
 
-static N: i32 = 4;
 lazy_static! {
     static ref companies: Vec<Schema> = {
         println!("+++ Initialize Datenanfragen... +++");
@@ -57,7 +57,7 @@ fn search_company(name: String, count: usize) -> PyResult<Vec<String>> {
     let jarwin = JaroWinkler::new();
     let mut companies_clone = companies.clone();
     companies_clone.sort_by(|b,a| jarwin.similarity(&(name.to_lowercase()), &(a.name.to_lowercase())).partial_cmp(&jarwin.similarity(&(name.to_lowercase()), &(b.name.to_lowercase()))).unwrap());
-    let names: Vec<String> = companies_clone.into_iter().take(count).map(|c| c.name).collect();
+    let names: Vec<String> = companies_clone.into_iter().take(count).map(|c| json!({"name": c.name, "address": c.address, "email": c.email}).to_string()).collect();
     Ok(names)
 }
 

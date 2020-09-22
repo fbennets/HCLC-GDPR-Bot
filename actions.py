@@ -16,6 +16,6 @@ class CompanySearchForm(FormAction):
     
 
     def submit(self, dispatcher, tracker, domain):
-        companyButtons=list(map(lambda b: { "title": b, "payload": "payload"}, search_company(tracker.get_slot("company_name"),5)))
+        companyButtons=list(map(lambda b: { "title": json.loads(b)["name"], "payload": "payload"}, search_company(tracker.get_slot("company_name"),5)))
         dispatcher.utter_message(text="Handelt es sich um eines der nachfolgenden Unternehmen? ", buttons=companyButtons)
         return []
