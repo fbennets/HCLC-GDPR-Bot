@@ -9,12 +9,11 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
 from rasa.core.tracker_store import InMemoryTrackerStore
-# from datenanfragen import search_company
 
-class GenerateLetter1(Action) :
+class GenerateLetter(Action) :
 
 	def name(self) -> Text:
-		return "generate_letter1"
+		return "generate_letter"
 
 	def run(self,file_name, dispatcher:CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]):
 
@@ -37,7 +36,7 @@ class GenerateLetter1(Action) :
 					slot = "".join(current_slot)
 					slots.append(slot[1:])
 					current_slot = []
-
+				
 				while is_slot == True:
 					current_slot.append(char)
 					break
@@ -46,20 +45,15 @@ class GenerateLetter1(Action) :
 
 
 		# nimmt Liste an benötigten Parametern und gibt jeweilige Werte aus der Session wieder
-		test_data = {
-							"nname" : "Gleich",
-							"vname" : "Julius"
-							}
-
 		def get_session_data_from_memory(parameter):
-
+			
 			session_data = {}
 
-			for i in parameter:
+			for i in range(len(parameter)):
 				key = parameter[i]
 				value = tracker.current_state()['slots'][key]
 
-				session_data.update({key:value})
+				session_data.update({key:value}) 
 
 			return session_data
 
@@ -79,59 +73,39 @@ class GenerateLetter1(Action) :
 		dispatcher.utter_message("Dein fertiges " + file_name + " wird generiert...")
 		dispatcher.utter_message(fill_in_session_data(a,b,c))
 
-# class CompanyForm(FormAction):
-#
-#     def name(self):
-#         return "company_form"
-#
-#     @staticmethod
-#     def required_slots(tracker):
-#         return [
-#             "company_name",
-#             "privacy_email",
-#             ]
-#
-#     def slot_mappings(self):
-#         # type: () -> Dict[Text: Union[Dict, List[Dict]]]
-#         """A dictionary to map required slots to
-#             - an extracted entity
-#             - intent: value pairs
-#             - a whole message
-#             or a list of them, where a first match will be picked"""
-#
-#         return {"company_name": [self.from_entity(entity="company_name"),
-#                              self.from_text()],
-#                 "privacy_email": [self.from_entity(entity="privacy_email"),
-#                              self.from_text()]}
-    # def submit(
-    #     self,
-    #     dispatcher: CollectingDispatcher,
-    #     tracker: Tracker,
-    #     domain: Dict[Text, Any],
-    # ) -> List[Dict]:
-    #
-    #     dispatcher.utter_message("Vielen Dank für die Eingabe.")
-    #     return []
+class CompanyForm(FormAction):
 
-class CompanySearchForm(FormAction):
     def name(self):
-        return "company_search_form"
+        return "company_form"
 
-# This is a simple example for a custom action which utters "Hello World!"
     @staticmethod
     def required_slots(tracker):
-        return ["company_name"]
+        return [
+            "company_name",
+            "privacy_email",
+            ]
 
     def slot_mappings(self):
-        return {"company_name": self.from_text(intent=None)}
+        # type: () -> Dict[Text: Union[Dict, List[Dict]]]
+        """A dictionary to map required slots to
+            - an extracted entity
+            - intent: value pairs
+            - a whole message
+            or a list of them, where a first match will be picked"""
 
+        return {"company_name": [self.from_entity(entity="company_name"),
+                             self.from_text()],
+                "privacy_email": [self.from_entity(entity="privacy_email"),
+                             self.from_text()]}
+    def submit(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict]:
 
-    def submit(self, dispatcher, tracker, domain):
-        companyButtons=list(map(lambda b: { "title": b, "payload": "payload"}, search_company(tracker.get_slot("company_name"),5)))
-        dispatcher.utter_message(text="Handelt es sich um eines der nachfolgenden Unternehmen? ", buttons=companyButtons)
+        dispatcher.utter_message("Vielen Dank für die Eingabe.")
         return []
-
-
 
 class DeleteDataForm(FormAction):
 
