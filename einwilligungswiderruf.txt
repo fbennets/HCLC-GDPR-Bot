@@ -1,0 +1,29 @@
+Betreff: Widerruf der Einwilligung zur Datenverarbeitung an {company_name}
+
+Sehr geehrte Damen und Herren,
+
+ich widerrufe hiermit die von mir erteilte Einwilligung in die Verarbeitung meiner personenbezogener Daten gemäß Art. 7 Abs. 3 S.1 DSGVO.
+
+Weiterhin verlange ich, dass meine gespeicherten Daten unverzüglich gelöscht werden gemäß Art. 17 Abs. 1 lit. b DSGVO.
+
+Nach Art. 12 Abs. 3 DSGVO haben Sie mich unverzüglich, spätestens aber innerhalb eines Monats nach Eingang des Antrags, über die vorgenommenen Löschungen zu informieren.
+
+Sollten Sie meinen Löschungsantrag ablehnen, fordere ich Sie auf, dies mir gegenüber unverzüglich unter Angaben der gesetzlichen Grundlage zu begründen.
+
+Zur Identifikation meiner Person habe ich folgende Daten beigefügt:
+
+Name: {name}
+
+E-Mail: {email}
+
+Kundennr.: {kundennummer}
+
+Anschrift: {anschrift}
+
+PLZ: {plz}
+
+Stadt: {stadt}
+
+Bei Nichtbeachtung meiner Forderungen behalte ich mir vor, rechtliche Schritte gegen Sie einzuleiten sowie Beschwerde bei der zuständigen Datenschutzaufsichtsbehörde einreichen.
+Mit freundlichen Grüßen
+{name}
