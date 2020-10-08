@@ -10,12 +10,16 @@ intents:
 actions:
   - respond_faq
   - respond_chitchat
+  - generate_letter
+  - generate_datenauskunft
+  - generate_werbewiderspruch
+  - generate_einwilligungswiderruf
+  - generate_datenloeschantrag
 
 forms:
   - company_form
   - delete_data_form
   - personal_data_form
-  - company_search_form
 
 entities:
   - company_name
@@ -93,7 +97,8 @@ responses:
     - title: "Ich weiß es nicht"
       payload: '/delete_personal_data{"consent_given": "ich_weiß_es_nicht"}'
 
-
+  utter_get_slots_from_memory:
+  - text: hier heja heja
 # Nutzerdaten responses
 
   utter_ask_name:
