@@ -18,6 +18,9 @@ actions:
 
 forms:
   - company_form
+  - information_personal_data_company_form
+  - stop_using_my_data_company_form
+  - stop_advertisement_company_form
   - delete_data_form
   - personal_data_form
 
