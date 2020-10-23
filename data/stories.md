@@ -55,6 +55,18 @@
   * faq
     - respond_faq
 
+## generate datenauskunft
+  * generate_datenauskunft_intent
+    - generate_datenauskunft
+
+## generate datenloeschantrag
+  * generate_datenloeschantrag_intent
+    - generate_datenloeschantrag
+
+## generate werbewiderspruch
+  * generate_werbewiderspruch_intent
+    - generate_werbewiderspruch
+
 <!-- ## Nutzerdaten
 * name
   - utter_ask_name

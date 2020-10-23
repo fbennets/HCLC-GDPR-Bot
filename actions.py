@@ -20,7 +20,11 @@ for name in company_zip.namelist():
     c_data = c_file.read()
     try:
         c_obj = json.loads(c_data)
-        companies.append({"name": c_obj["name"], "address": c_obj["address"], "email": c_obj["email"]})
+        companies.append({
+            "company_name": c_obj["name"], 
+            # "address": c_obj["address"], 
+            "privacy_email": c_obj["email"]
+        })
     except:
         pass
 
@@ -156,7 +160,7 @@ class CompanyForm(FormAction):
         return "chitchat"
 
     def search_company(self, name, limit):
-        return (sorted(companies, reverse=True, key=(lambda c:distance.get_jaro_distance(name,c["name"],winkler=True))))[:limit]
+        return (sorted(companies, reverse=True, key=(lambda c:distance.get_jaro_distance(name,c["company_name"],winkler=True))))[:limit]
 
     def submit(
         self,
@@ -165,7 +169,7 @@ class CompanyForm(FormAction):
         domain: Dict[Text, Any],
     ) -> List[Dict]:
         #dispatcher.utter_message("Vielen Dank für die Eingabe.")
-        companyButtons=list(map(lambda b: { "title": b["name"], "payload": self.next_intent()+json.dumps(b)}, self.search_company(tracker.get_slot("company_name"),5)))
+        companyButtons=list(map(lambda b: { "title": b["company_name"], "payload": "/"+self.next_intent()+json.dumps(b)}, self.search_company(tracker.get_slot("company_name"),5)))
         dispatcher.utter_message(text="Handelt es sich um eines der nachfolgenden Unternehmen? ", buttons=companyButtons)
         return []
 
@@ -174,21 +178,21 @@ class InformationPersonalDataCompanyForm(CompanyForm):
         return "information_personal_data_company_form"
     
     def next_intent(self):
-        return "generate_datenauskunft"
+        return "generate_datenauskunft_intent"
 
 class StopUsingMyDataCompanyForm(CompanyForm):
     def name(self):
         return "stop_using_my_data_company_form"
     
     def next_intent(self):
-        return "generate_datenloeschantrag"
+        return "generate_datenloeschantrag_intent"
 
 class StopAdvertisementCompanyForm(CompanyForm):
     def name(self):
         return "stop_advertisement_company_form"
     
     def next_intent(self):
-        return "generate_werbewiderspruch"
+        return "generate_werbewiderspruch_intent"
 
 class DeleteDataForm(FormAction):
 
