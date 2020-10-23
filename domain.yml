@@ -15,11 +15,13 @@ actions:
   - generate_werbewiderspruch
   - generate_einwilligungswiderruf
   - generate_datenloeschantrag
+  - action_search_company
 
 forms:
   - company_form
   - delete_data_form
   - personal_data_form
+  - company_search_form
 
 entities:
   - company_name
@@ -28,6 +30,8 @@ entities:
   - consent_given
 
 slots:
+  company_data:
+    type: text
   company_name:
     type: unfeaturized
   privacy_email:

@@ -35,8 +35,6 @@
 - Daten über mich
 - Daten abfragen
 
-
-
 ## intent: faq/ask_about_hclc
 - Wer seid ihr?
 - Woher kommst du?

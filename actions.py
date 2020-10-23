@@ -6,9 +6,54 @@
 
 from rasa_sdk.forms import FormAction
 from rasa_sdk import Action, Tracker
+from rasa_sdk.events import SlotSet, UserUtteranceReverted
 from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
 from rasa.core.tracker_store import InMemoryTrackerStore
+# from datenanfragen import search_company 
+import json
+
+class ActionCheckRestaurants(Action):
+   def name(self):
+      # type: () -> Text
+      return "action_search_company"
+
+   def run(self, dispatcher, tracker, domain):
+      # type: (CollectingDispatcher, Tracker, Dict[Text, Any]) -> List[Dict[Text, Any]]
+
+      company_name = tracker.get_slot('company_name')
+      if company_name == None:
+          dispatcher.utter_message(text="Bitte gib den Unternehmensnamen ein")
+      else:
+          dispatcher.utter_message(text="Company name set")
+          return []
+        #   demo_array = [{'name':'Democompany'}]
+        #   companyButtons=list(map(lambda b: { "title": json.loads(b)["name"], "payload": "/stop_advertisement{'company_data':" + b +"}"}, demo_array))
+        #   #companyButtons=list(map(lambda b: { "title": json.loads(b)["name"], "payload": json.loads(b)}, search_company(tracker.get_slot("company_name"),5)))
+        #   dispatcher.utter_message(text="Handelt es sich um eines der nachfolgenden Unternehmen? ", buttons=companyButtons)    
+        #   return [SlotSet("company_data", '')]
+
+
+class CompanySearchForm(FormAction):
+    def name(self):
+        return "company_search_form"
+
+    @staticmethod
+    def required_slots(tracker):
+        return ["company_name", "company_data"]
+
+
+    def slot_mappings(self):
+        return {"company_name": self.from_text(intent=None)}
+    
+
+    def submit(self, dispatcher, tracker, domain):
+        demo_array = [{'name':'Democompany'}]
+        companyButtons=list(map(lambda b: { "title": json.loads(b)["name"], "payload": "/stop_advertisement{'company_data':" + b +"}"}, demo_array))
+        #companyButtons=list(map(lambda b: { "title": json.loads(b)["name"], "payload": json.loads(b)}, search_company(tracker.get_slot("company_name"),5)))
+        dispatcher.utter_message(text="Handelt es sich um eines der nachfolgenden Unternehmen? ", buttons=companyButtons)
+
+
 
 class generate_letter(Action) :
 
@@ -124,39 +169,39 @@ class generate_datenloeschantrag(generate_letter) :
 		dispatcher.utter_message("Dein fertiges Schreiben wird generiert...")
 		dispatcher.utter_message(d)
 
-class CompanyForm(FormAction):
+# class CompanyForm(FormAction):
 
-    def name(self):
-        return "company_form"
+#     def name(self):
+#         return "company_form"
 
-    @staticmethod
-    def required_slots(tracker):
-        return [
-            "company_name",
-            "privacy_email",
-            ]
+#     @staticmethod
+#     def required_slots(tracker):
+#         return [
+#             "company_name",
+#             "privacy_email",
+#             ]
 
-    def slot_mappings(self):
-        # type: () -> Dict[Text: Union[Dict, List[Dict]]]
-        """A dictionary to map required slots to
-            - an extracted entity
-            - intent: value pairs
-            - a whole message
-            or a list of them, where a first match will be picked"""
+#     def slot_mappings(self):
+#         # type: () -> Dict[Text: Union[Dict, List[Dict]]]
+#         """A dictionary to map required slots to
+#             - an extracted entity
+#             - intent: value pairs
+#             - a whole message
+#             or a list of them, where a first match will be picked"""
 
-        return {"company_name": [self.from_entity(entity="company_name"),
-                             self.from_text()],
-                "privacy_email": [self.from_entity(entity="privacy_email"),
-                             self.from_text()]}
-    def submit(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Dict]:
+#         return {"company_name": [self.from_entity(entity="company_name"),
+#                              self.from_text()],
+#                 "privacy_email": [self.from_entity(entity="privacy_email"),
+#                              self.from_text()]}
+#     def submit(
+#         self,
+#         dispatcher: CollectingDispatcher,
+#         tracker: Tracker,
+#         domain: Dict[Text, Any],
+#     ) -> List[Dict]:
 
-        dispatcher.utter_message("Vielen Dank für die Eingabe.")
-        return []
+#         dispatcher.utter_message("Vielen Dank für die Eingabe.")
+#         return []
 
 class DeleteDataForm(FormAction):
 

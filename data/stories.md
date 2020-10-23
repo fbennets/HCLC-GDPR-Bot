@@ -6,12 +6,10 @@
   - form{"name": "personal_data_form"}   
   - form{"name": null}    
   - utter_start_company_form
-  <!-- - company_form                   
-  - form{"name": "company_form"}   
-  - form{"name": null}     -->
   - company_search_form
   - form{"name": "company_search_form"}
   - form{"name": null}
+  - generate_datenauskunft
 
 ## Stop Data use
 * stop_using_my_data
@@ -21,12 +19,10 @@
   - form{"name": "personal_data_form"}   
   - form{"name": null}    
   - utter_start_company_form
-  <!-- - company_form                   
-  - form{"name": "company_form"}   
-  - form{"name": null}     -->
   - company_search_form
   - form{"name": "company_search_form"}
   - form{"name": null}
+  - generate_einwilligungswiderruf
 
 ## Stop advertisement
 * stop_advertisement
@@ -36,13 +32,12 @@
   - form{"name": "personal_data_form"}   
   - form{"name": null}    
   - utter_start_company_form
-  <!-- - company_form                   
-  - form{"name": "company_form"}   
-  - form{"name": null} -->
+  - action_search_company
   - company_search_form
   - form{"name": "company_search_form"}
   - form{"name": null}
-  
+  - generate_werbewiderspruch
+
 ## Delete personal data
 * delete_personal_data
   - delete_data_form                  
@@ -51,7 +46,8 @@
   - utter_start_personal_data_form
   - personal_data_form                   
   - form{"name": "personal_data_form"}   
-  - form{"name": null}   
+  - form{"name": null}
+  - generate_datenloeschantrag
 
 ## Datenschutz
 * datenschutz_begriff
