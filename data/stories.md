@@ -6,12 +6,9 @@
   - form{"name": "personal_data_form"}   
   - form{"name": null}    
   - utter_start_company_form
-  <!-- - company_form                   
-  - form{"name": "company_form"}   
-  - form{"name": null}     -->
-  - company_search_form
-  - form{"name": "company_search_form"}
-  - form{"name": null}
+  - information_personal_data_company_form                   
+  - form{"name": "information_personal_data_company_form"}   
+  - form{"name": null}     
 
 ## Stop Data use
 * stop_using_my_data
@@ -21,11 +18,8 @@
   - form{"name": "personal_data_form"}   
   - form{"name": null}    
   - utter_start_company_form
-  <!-- - company_form                   
-  - form{"name": "company_form"}   
-  - form{"name": null}     -->
-  - company_search_form
-  - form{"name": "company_search_form"}
+  - stop_using_my_data_company_form                   
+  - form{"name": "stop_using_my_data_company_form"}   
   - form{"name": null}
 
 ## Stop advertisement
@@ -36,11 +30,8 @@
   - form{"name": "personal_data_form"}   
   - form{"name": null}    
   - utter_start_company_form
-  <!-- - company_form                   
-  - form{"name": "company_form"}   
-  - form{"name": null} -->
-  - company_search_form
-  - form{"name": "company_search_form"}
+  - stop_advertisement_company_form                   
+  - form{"name": "stop_advertisement_company_form"}   
   - form{"name": null}
   
 ## Delete personal data
@@ -63,6 +54,18 @@
 ## Some question from FAQ
   * faq
     - respond_faq
+
+## generate datenauskunft
+  * generate_datenauskunft_intent
+    - generate_datenauskunft
+
+## generate datenloeschantrag
+  * generate_datenloeschantrag_intent
+    - generate_datenloeschantrag
+
+## generate werbewiderspruch
+  * generate_werbewiderspruch_intent
+    - generate_werbewiderspruch
 
 <!-- ## Nutzerdaten
 * name

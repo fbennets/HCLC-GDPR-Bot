@@ -6,6 +6,9 @@ intents:
   - stop_advertisement
   - delete_personal_data
   - datenschutz_begriff
+  - generate_datenauskunft_intent
+  - generate_datenloeschantrag_intent
+  - generate_werbewiderspruch_intent
 
 actions:
   - respond_faq
@@ -18,6 +21,9 @@ actions:
 
 forms:
   - company_form
+  - information_personal_data_company_form
+  - stop_using_my_data_company_form
+  - stop_advertisement_company_form
   - delete_data_form
   - personal_data_form
 
@@ -84,7 +90,7 @@ responses:
     buttons:
     - title: "Die Daten werden nicht mehr benötigt"
       payload: '/delete_personal_data{"reason_for_deletion": "nicht_mehr_benötigt"}'
-    - title: "Die Datenverarbeitung erfolgte unrechtmäßig"
+    - title: "Die Datenverarbeitung erfolgte unrechtmäßig"2020-10-23 14:59:18 WARNING  rasa.core.featurizers  - Feature 'intent_generate_datenauskunft_intent' could 
       payload: '/delete_personal_data{"reason_for_deletion": "unrechtmäßige_einwilligung"}'
 
   utter_ask_consent_given:

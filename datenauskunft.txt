@@ -1,4 +1,4 @@
-Betreff: Antrag auf Datenauskunft gem. Art. 15 DSGVO an {company_name}
+Betreff: Antrag auf Datenauskunft gem. Art. 15 DSGVO an {company_name} ({privacy_email})
 
 Sehr geehrte Damen und Herren,
 

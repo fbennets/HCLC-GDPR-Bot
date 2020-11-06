@@ -9,6 +9,24 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
 from rasa.core.tracker_store import InMemoryTrackerStore
+from pyjarowinkler import distance
+import zipfile
+import json
+
+company_zip = zipfile.ZipFile('./search/src/companies.zip', 'r')
+companies = []
+for name in company_zip.namelist():
+    c_file = company_zip.open(name)
+    c_data = c_file.read()
+    try:
+        c_obj = json.loads(c_data)
+        companies.append({
+            "company_name": c_obj["name"], 
+            # "address": c_obj["address"], 
+            "privacy_email": c_obj["email"]
+        })
+    except:
+        pass
 
 class generate_letter(Action) :
 
@@ -125,38 +143,56 @@ class generate_datenloeschantrag(generate_letter) :
 		dispatcher.utter_message(d)
 
 class CompanyForm(FormAction):
-
     def name(self):
         return "company_form"
 
     @staticmethod
     def required_slots(tracker):
         return [
-            "company_name",
-            "privacy_email",
+            "company_name"
             ]
 
     def slot_mappings(self):
-        # type: () -> Dict[Text: Union[Dict, List[Dict]]]
-        """A dictionary to map required slots to
-            - an extracted entity
-            - intent: value pairs
-            - a whole message
-            or a list of them, where a first match will be picked"""
-
         return {"company_name": [self.from_entity(entity="company_name"),
-                             self.from_text()],
-                "privacy_email": [self.from_entity(entity="privacy_email"),
                              self.from_text()]}
+
+    def next_intent(self):
+        return "chitchat"
+
+    def search_company(self, name, limit):
+        return (sorted(companies, reverse=True, key=(lambda c:distance.get_jaro_distance(name,c["company_name"],winkler=True))))[:limit]
+
     def submit(
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict]:
-
-        dispatcher.utter_message("Vielen Dank für die Eingabe.")
+        #dispatcher.utter_message("Vielen Dank für die Eingabe.")
+        companyButtons=list(map(lambda b: { "title": b["company_name"], "payload": "/"+self.next_intent()+json.dumps(b)}, self.search_company(tracker.get_slot("company_name"),5)))
+        dispatcher.utter_message(text="Handelt es sich um eines der nachfolgenden Unternehmen? ", buttons=companyButtons)
         return []
+
+class InformationPersonalDataCompanyForm(CompanyForm):
+    def name(self):
+        return "information_personal_data_company_form"
+    
+    def next_intent(self):
+        return "generate_datenauskunft_intent"
+
+class StopUsingMyDataCompanyForm(CompanyForm):
+    def name(self):
+        return "stop_using_my_data_company_form"
+    
+    def next_intent(self):
+        return "generate_datenloeschantrag_intent"
+
+class StopAdvertisementCompanyForm(CompanyForm):
+    def name(self):
+        return "stop_advertisement_company_form"
+    
+    def next_intent(self):
+        return "generate_werbewiderspruch_intent"
 
 class DeleteDataForm(FormAction):
 
