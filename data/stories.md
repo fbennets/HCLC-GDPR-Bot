@@ -43,6 +43,10 @@
   - personal_data_form                   
   - form{"name": "personal_data_form"}   
   - form{"name": null}   
+  - utter_start_company_form
+  - delete_personal_data_company_form                   
+  - form{"name": "delete_personal_data_company_form"}   
+  - form{"name": null}
 
 ## Datenschutz
 * datenschutz_begriff
@@ -58,6 +62,10 @@
 ## generate datenauskunft
   * generate_datenauskunft_intent
     - generate_datenauskunft
+
+## generate einwilligungswiderruf
+  * generate_einwilligungswiderruf_intent
+    - generate_einwilligungswiderruf
 
 ## generate datenloeschantrag
   * generate_datenloeschantrag_intent

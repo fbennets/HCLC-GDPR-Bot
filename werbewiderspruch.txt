@@ -1,33 +1,33 @@
-Betreff: Werbewiderspruch an {company_name}
+<p><b>Betreff: Werbewiderspruch an {company_name}</b></p>
 
-Sehr geehrte Damen und Herren,
+<p>Sehr geehrte Damen und Herren,</p>
 
-ich lege hiermit Widerspruch gegen die Verarbeitung meiner personenbezogenen Daten für Direktwerbung gemäß Art. 21 Abs. 2 DSGVO ein. Der Widerspruch betrifft auch Profiling, soweit es mit Direktwerbung in Verbindung steht.
+<p>ich lege hiermit Widerspruch gegen die Verarbeitung meiner personenbezogenen Daten für Direktwerbung gemäß Art. 21 Abs. 2 DSGVO ein. Der Widerspruch betrifft auch Profiling, soweit es mit Direktwerbung in Verbindung steht.</p>
 
-Sollte ich eine Einwilligung zur Verarbeitung meiner Daten für Direktwerbung (bspw. nach Art. 6 Abs. 1 lit. a oder Art. 9 Abs. 2 DSGVO) erteilt haben, widerrufe ich diese hiermit.
+<p>Sollte ich eine Einwilligung zur Verarbeitung meiner Daten für Direktwerbung (bspw. nach Art. 6 Abs. 1 lit. a oder Art. 9 Abs. 2 DSGVO) erteilt haben, widerrufe ich diese hiermit.</p>
 
-Meine Anfrage schließt explizit auch sämtliche weiteren Angebote und Unternehmen ein, für die Sie Verantwortlicher im Sinne des Art. 4 Nr. 7 DSGVO sind.
+<p>Meine Anfrage schließt explizit auch sämtliche weiteren Angebote und Unternehmen ein, für die Sie Verantwortlicher im Sinne des Art. 4 Nr. 7 DSGVO sind.</p>
 
-Nach Art. 12 Abs. 3 DSGVO haben Sie mir meinen Widerspruch unverzüglich, spätestens aber innerhalb eines Monats nach Eingang des Antrags, zu bestätigen.
+<p>Nach Art. 12 Abs. 3 DSGVO haben Sie mir meinen Widerspruch unverzüglich, spätestens aber innerhalb eines Monats nach Eingang des Antrags, zu bestätigen.</p>
 
-Zur Identifikation meiner Person habe ich folgende Daten beigefügt:
+<p>Zur Identifikation meiner Person habe ich folgende Daten beigefügt:</p>
 
-Name: {name}
+<p>Name: {name}</p>
 
-E-Mail: {email}
+<p>E-Mail: {email}</p>
 
-Kundennr.: {kundennummer}
+<p>Kundennr.: {kundennummer}</p>
 
-Anschrift: {anschrift}
+<p>Anschrift: {anschrift}</p>
 
-PLZ: {plz}
+<p>PLZ: {plz}</p>
 
-Stadt: {stadt}
+<p>Stadt: {stadt}</p>
 
-Sollten Sie meinem Antrag nicht innerhalb der genannten Frist nachkommen, behalte ich mir vor rechtliche Schritte gegen Sie einzuleiten und Beschwerde bei der zuständigen Datenschutzaufsichtsbehörde einzureichen
+<p>Sollten Sie meinem Antrag nicht innerhalb der genannten Frist nachkommen, behalte ich mir vor rechtliche Schritte gegen Sie einzuleiten und Beschwerde bei der zuständigen Datenschutzaufsichtsbehörde einzureichen.</p>
 
-Schon im Voraus vielen Dank für Ihre Mühe.
+<p>Schon im Voraus vielen Dank für Ihre Mühe.</p>
 
-Mit freundlichen Grüßen
+<p>Mit freundlichen Grüßen</p>
 
-{name}
+<p>{name}</p>

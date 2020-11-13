@@ -13,19 +13,20 @@ intents:
 actions:
   - respond_faq
   - respond_chitchat
-  - generate_letter
-  - generate_datenauskunft
-  - generate_werbewiderspruch
-  - generate_einwilligungswiderruf
-  - generate_datenloeschantrag
 
 forms:
   - company_form
   - information_personal_data_company_form
   - stop_using_my_data_company_form
   - stop_advertisement_company_form
+  - delete_personal_data_company_form
   - delete_data_form
   - personal_data_form
+  - generate_letter
+  - generate_datenauskunft
+  - generate_werbewiderspruch
+  - generate_einwilligungswiderruf
+  - generate_datenloeschantrag
 
 entities:
   - company_name
@@ -90,7 +91,7 @@ responses:
     buttons:
     - title: "Die Daten werden nicht mehr benötigt"
       payload: '/delete_personal_data{"reason_for_deletion": "nicht_mehr_benötigt"}'
-    - title: "Die Datenverarbeitung erfolgte unrechtmäßig"2020-10-23 14:59:18 WARNING  rasa.core.featurizers  - Feature 'intent_generate_datenauskunft_intent' could 
+    - title: "Die Datenverarbeitung erfolgte unrechtmäßig"
       payload: '/delete_personal_data{"reason_for_deletion": "unrechtmäßige_einwilligung"}'
 
   utter_ask_consent_given:
@@ -105,8 +106,6 @@ responses:
 
   utter_get_slots_from_memory:
   - text: hier heja heja
-# Nutzerdaten responses
-
   utter_ask_name:
   - text: "Bitte gib deinen Vor- und Nachnamen an."
   utter_ask_email:
@@ -121,7 +120,6 @@ responses:
   - text: "Bitte gib deine Stadt an."
   utter_ask_land:
   - text: "Bitte gib dein Land an."
-
 
 session_config:
   session_expiration_time: 60

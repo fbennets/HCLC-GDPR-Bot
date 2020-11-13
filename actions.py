@@ -12,6 +12,13 @@ from rasa.core.tracker_store import InMemoryTrackerStore
 from pyjarowinkler import distance
 import zipfile
 import json
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+import io
+import weasyprint 
+
 
 company_zip = zipfile.ZipFile('./search/src/companies.zip', 'r')
 companies = []
@@ -28,7 +35,16 @@ for name in company_zip.namelist():
     except:
         pass
 
-class generate_letter(Action) :
+class generate_letter(FormAction) :
+	@staticmethod
+	def required_slots(tracker):
+		return [
+    		"company_name",
+			"privacy_email"
+		]
+
+	def slot_mappings(self):
+		return {"privacy_email": [self.from_entity(entity="privacy_email"), self.from_text()]}
 
 	def name(self) -> Text:
 		return "generate_letter"
@@ -59,6 +75,48 @@ class generate_letter(Action) :
 
 		return slots
 
+	def get_file_name(self):
+		return None
+
+	def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
+		file_name = self.get_file_name()
+		a = self.get_letter_text(file_name)
+		b = self.list_needed_slots(a)
+		c =	self.get_session_data_from_memory(b,tracker)
+		d = self.fill_in_session_data(a,b,c)
+
+		"""
+		dispatcher.utter_message("Dein fertiges Schreiben wird generiert...")
+		dispatcher.utter_message(d)
+		"""
+		smtp_server = smtplib.SMTP_SSL("securemail.linevast.de", 465, context=ssl.create_default_context())
+		smtp_server.login(os.environ["HCLC_EMAIL"], os.environ["HCLC_PWD"])
+
+		dispatcher.utter_message("Vielen Dank für Ihre Angaben! Ich generiere nun einen individualisierten Antrag, um ihn sodann der von Ihnen angegebenen E-Mail-Adresse zuzuleiten.")
+		
+		message = MIMEMultipart("alternative")
+		message["Subject"] = "[HCLC] Ihr DSGVO-Antrag wurde erstellt"
+		message["From"] = "Humboldt Consumer Law Clinic <{}>".format(os.environ["HCLC_EMAIL"])
+		message["To"] = tracker.get_slot("email")
+
+		message.attach(MIMEText("<p>Hallo {},</p><p>Ihr angefordertes Musterschreiben zur Weiterleitung an {} finden Sie im Anhang.</p><p>Mit freundlichen Grüßen</p><p>Ihre HCLC</p>".format(tracker.get_slot("name"), tracker.get_slot("privacy_email")), "html"))
+
+		mustertextHtml = weasyprint.HTML(string=d)
+		mustertextCss = weasyprint.CSS(string="p { font-family: Arial}")
+		
+		mustertextBuffer = io.BytesIO(mustertextHtml.write_pdf(stylesheets=[mustertextCss]))
+
+		mustertextAttachment = MIMEApplication(
+            mustertextBuffer.read(),
+            Name="DSGVO-Antrag.pdf"
+        )
+
+		message.attach(mustertextAttachment)
+
+		smtp_server.sendmail(os.environ["HCLC_EMAIL"], tracker.get_slot("email"), message.as_string())
+
+		return []
+
 
 	# nimmt Liste an benötigten Parametern und gibt jeweilige Werte aus der Session wieder
 	def get_session_data_from_memory(self,parameter,tracker):
@@ -87,60 +145,32 @@ class generate_datenauskunft(generate_letter) :
 		return "generate_datenauskunft"
 
 
-	def run(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
-		file_name = "datenauskunft.txt"
-		a = self.get_letter_text(file_name)
-		b = self.list_needed_slots(a)
-		c =	self.get_session_data_from_memory(b,tracker)
-		d = self.fill_in_session_data(a,b,c)
-
-		dispatcher.utter_message("Dein fertiges Schreiben wird generiert...")
-		dispatcher.utter_message(d)
+	def get_file_name(self):
+		return "datenauskunft.txt"
 
 class generate_werbewiderspruch(generate_letter) :
 
 	def name(self) -> Text:
 		return "generate_werbewiderspruch"
 
-	def run(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
-		file_name = "werbewiderspruch.txt"
-		a = self.get_letter_text(file_name)
-		b = self.list_needed_slots(a)
-		c =	self.get_session_data_from_memory(b,tracker)
-		d = self.fill_in_session_data(a,b,c)
-
-		dispatcher.utter_message("Dein fertiges Schreiben wird generiert...")
-		dispatcher.utter_message(d)
+	def get_file_name(self):
+		return "werbewiderspruch.txt"
 
 class generate_einwilligungswiderruf(generate_letter) :
 
 	def name(self) -> Text:
 		return "generate_einwilligungswiderruf"
 
-	def run(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
-		file_name = "einwilligungswiderruf.txt"
-		a = self.get_letter_text(file_name)
-		b = self.list_needed_slots(a)
-		c =	self.get_session_data_from_memory(b,tracker)
-		d = self.fill_in_session_data(a,b,c)
-
-		dispatcher.utter_message("Dein fertiges Schreiben wird generiert...")
-		dispatcher.utter_message(d)
+	def get_file_name(self):
+		return "einwilligungswiderruf.txt"
 
 class generate_datenloeschantrag(generate_letter) :
 
 	def name(self) -> Text:
 		return "generate_datenloeschantrag"
 
-	def run(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
-		file_name = "datenloeschantrag.txt"
-		a = self.get_letter_text(file_name)
-		b = self.list_needed_slots(a)
-		c =	self.get_session_data_from_memory(b,tracker)
-		d = self.fill_in_session_data(a,b,c)
-
-		dispatcher.utter_message("Dein fertiges Schreiben wird generiert...")
-		dispatcher.utter_message(d)
+	def get_file_name(self):
+		return "datenloeschantrag.txt"
 
 class CompanyForm(FormAction):
     def name(self):
@@ -170,7 +200,10 @@ class CompanyForm(FormAction):
     ) -> List[Dict]:
         #dispatcher.utter_message("Vielen Dank für die Eingabe.")
         companyButtons=list(map(lambda b: { "title": b["company_name"], "payload": "/"+self.next_intent()+json.dumps(b)}, self.search_company(tracker.get_slot("company_name"),5)))
+        companyButtons.append({"title": "Keines dieser Unternehmen", "payload": "/"+self.next_intent()})
         dispatcher.utter_message(text="Handelt es sich um eines der nachfolgenden Unternehmen? ", buttons=companyButtons)
+
+
         return []
 
 class InformationPersonalDataCompanyForm(CompanyForm):
@@ -185,7 +218,7 @@ class StopUsingMyDataCompanyForm(CompanyForm):
         return "stop_using_my_data_company_form"
     
     def next_intent(self):
-        return "generate_datenloeschantrag_intent"
+        return "generate_einwilligungswiderruf_intent"
 
 class StopAdvertisementCompanyForm(CompanyForm):
     def name(self):
@@ -193,6 +226,13 @@ class StopAdvertisementCompanyForm(CompanyForm):
     
     def next_intent(self):
         return "generate_werbewiderspruch_intent"
+
+class DeletePersonalDataCompanyForm(CompanyForm):
+    def name(self):
+        return "delete_personal_data_company_form"
+    
+    def next_intent(self):
+        return "generate_datenloeschantrag_intent"
 
 class DeleteDataForm(FormAction):
 
