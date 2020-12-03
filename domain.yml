@@ -9,6 +9,7 @@ intents:
   - generate_datenauskunft_intent
   - generate_datenloeschantrag_intent
   - generate_werbewiderspruch_intent
+  - generate_einwilligungswiderruf_intent
 
 actions:
   - respond_faq

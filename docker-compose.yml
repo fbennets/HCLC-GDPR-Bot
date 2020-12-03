@@ -4,6 +4,16 @@ services:
     image: rasa/rasa:1.10.3-full
     ports:
       - 5005:5005
+    depends_on:
+      - api
     volumes:
       - ./:/app
     command: run --enable-api
+  api:
+    build:
+      context: ./
+    ports:
+      - 5055:5055
+    volumes:
+      - ./:/app
+    command: run actions
