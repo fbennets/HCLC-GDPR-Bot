@@ -53,7 +53,7 @@
 - Wo finde ich eure Datenschutzerklärung?
 
 
-## intent: faq/ask_for_help
+## intent: ask_for_help
 - Hilfe
 - Was kannst du tun?
 - Wobei kannst du mir helfen?

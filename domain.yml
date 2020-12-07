@@ -10,6 +10,7 @@ intents:
   - generate_datenloeschantrag_intent
   - generate_werbewiderspruch_intent
   - generate_einwilligungswiderruf_intent
+  - ask_for_help
 
 actions:
   - respond_faq
@@ -62,6 +63,17 @@ slots:
 responses:
   utter_datenschutz_begriff:
   - text: "Du hast Ansprüche aus der DSGVO. Ich kann Dir dabei helfen sie durchzusetzen."
+  
+  utter_ask_for_help:
+  - text: "Ich kann dir dabei helfen Ansprüche aus der Datenschutzgrundverordnung durchzusetzen. Was willst du tun?"
+    buttons:
+    - title: "Werbung abbestellen"
+      payload: '/stop_advertisement'
+    - title: "Persönliche Daten bei einer Firma abfragen"
+      payload: '/information_personal_data'
+    - title: "Verwendung meiner Daten verbieten"
+      payload: '/stop_using_my_data'
+
 
   utter_delete_personal_data:
   - text: "Gerne helfe ich dir dabei, deine Daten zu löschen."

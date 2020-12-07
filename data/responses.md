@@ -7,10 +7,6 @@
     - Wir sind die gemeinnützige studentische Rechtsberatung der Juristischen Fakultät der Humboldt Universität. Wir studieren Jura und werden von AnwältInnen und ProfessorInnen betreut. Dadurch können wir sicherstellen, dass unsere Arbeit rechtlich geprüft ist. Zudem sind wir eine ehrenamtliche Organisation, die sich dem Verbraucherschutz verschrieben hat und keine kommerziellen Absichten verfolgt. Besuche gerne unsere [Website](www.hclc-berlin.de), um uns kennenzulernen!
 
 
-## ask for help
-* faq/ask_for_help
-  - Ich kann dir dabei helfen Ansprüche aus der Datenschutzgrundverordnung durchzusetzen.
-
 ## confused
 * faq/confused
     - Oh, bist du verwirrt?
@@ -18,7 +14,7 @@
 
 ## greet
 * chitchat/greet
-  - Hey, ich bin DSBot. Schön, dass Du Deinen weg zu mir gefunden hast.
+  - Hey, ich bin Data-HumBot. Schön, dass Du Deinen Weg zu mir gefunden hast.
 
 
 ## goodbye

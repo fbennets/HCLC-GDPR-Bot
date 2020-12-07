@@ -75,6 +75,10 @@
   * generate_werbewiderspruch_intent
     - generate_werbewiderspruch
 
+## happy path
+* ask_for_help
+  - utter_ask_for_help
+
 <!-- ## Nutzerdaten
 * name
   - utter_ask_name
