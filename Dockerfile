@@ -1,6 +1,6 @@
 FROM rasa/rasa:1.10.3-full
 WORKDIR /app
-COPY requirements.txt /app
+COPY requirements-prod.txt /app
 COPY search/target/wheels/string_sum-0.1.0-cp37-cp37m-manylinux1_x86_64.whl /app
 COPY search/target/wheels/datenanfragen-0.1.0-cp37-cp37m-manylinux1_x86_64.whl /app
 USER root
