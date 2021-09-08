@@ -20,7 +20,7 @@ klein==17.10.0
 MarkupSafe==1.1.1
 maturin==0.8.2
 mock==4.0.2
-Pillow==8.0.1
+Pillow==8.3.2
 PyHamcrest==2.0.2
 pyjarowinkler==1.8
 pyPdf==1.13
